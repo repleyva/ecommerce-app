@@ -1,0 +1,87 @@
+.header {
+  background-color: $main-bg;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $header-height;
+  z-index: 99;
+	transition: height 0.3s ease;
+
+  .container {
+    height: 100%;
+  }
+
+	&.shrink {
+		height: $header-shrink-height;
+		box-shadow: $box-shadow;
+	}
+
+  &__logo {
+    @include flex(center, center);
+    height: 100%;
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+
+    img {
+      height: 28px;
+    }
+  }
+
+  &__menu {
+    @include flex(center, space-between);
+    height: 100%;
+    font-size: 1.5rem;
+
+    &__mobile-toggle {
+      display: none;
+    }
+
+    &__item ~ &__item {
+      margin-left: 28px;
+    }
+
+    &__item.active {
+      font-weight: 600;
+      color: $main-color;
+    }
+
+    &__item:hover {
+      color: $main-color;
+    }
+
+    &__left,
+    &__right {
+      @include flex(center, center);
+      height: 100%;
+    }
+
+    &__right {
+      font-size: 2.25rem;
+      &__item {
+        @include flex(center, center);
+      }
+
+      @include tablet {
+        margin-left: auto;
+        font-size: 1.6rem;
+
+      }
+
+      @include mobile {
+        font-size: 1.5rem;
+      }
+    }
+
+    &__left {
+      &__close {
+        display: none;
+      }
+
+			@include tablet {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

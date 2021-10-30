@@ -10,8 +10,8 @@ const App = () => {
       <Route
         render={(props) => (
           <div>
+            <Header {...props} />
             <div className="container">
-              <Header {...props} />
               <div className="main">
                 <Routes />
               </div>

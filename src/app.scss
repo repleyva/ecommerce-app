@@ -34,6 +34,7 @@ ul {
 a {
   text-decoration: none;
   color: unset;
+	cursor: pointer;
 }
 
 @each $color, $val in $colors {
@@ -83,7 +84,7 @@ a {
   min-height: 100vh;
 
   @include tablet {
-    margin-top: calc(#{$header-tablet-height} + 20px);
+    margin-top: calc(#{$header-tablet-height} + 30px);
   }
 
   @include mobile {
