@@ -26,6 +26,8 @@ const Header = () => {
   const { pathname } = useLocation();
   const activeNav = mainNav.findIndex((e) => e.path === pathname);
   const headerRef = useRef(null);
+  const menuLeft = useRef(null);
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (
@@ -35,12 +37,15 @@ const Header = () => {
         headerRef.current.classList.add("shrink");
       } else {
         headerRef.current.classList.remove("shrink");
-			}
+      }
     });
     return () => {
       window.removeEventListener("scroll");
     };
   }, []);
+
+  const handleMain = () => menuLeft.current.classList.toggle("active");
+
   return (
     <header className="header" ref={headerRef}>
       <div className="container">
@@ -50,11 +55,11 @@ const Header = () => {
           </Link>
         </div>
         <div className="header__menu">
-          <div className="header__menu__mobile-toggle">
+          <div className="header__menu__mobile-toggle" onClick={handleMain}>
             <i className="bx bx-menu-alt-left"></i>
           </div>
-          <div className="header__menu__left">
-            <div className="header__menu__left__close">
+          <div className="header__menu__left" ref={menuLeft}>
+            <div className="header__menu__left__close" onClick={handleMain}>
               <i className="bx bx-chevron-left"></i>
             </div>
             {mainNav.map((item, index) => (
@@ -63,6 +68,7 @@ const Header = () => {
                 className={`header__menu__item header__menu__left__item ${
                   index === activeNav && "active"
                 }`}
+                onClick={handleMain}
               >
                 <Link to={item.path}>
                   <span>{item.display}</span>
