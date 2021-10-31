@@ -1,5 +1,7 @@
-const Product = () => {
-	return <div>Product</div>;
-}
+import Helmet from "../components/Helmet";
 
-export default Product
+const Product = () => {
+  return <Helmet title="Products">Product</Helmet>;
+};
+
+export default Product;

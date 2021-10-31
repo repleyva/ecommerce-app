@@ -1,8 +1,10 @@
+import Helmet from "../components/Helmet"
+
 const Cart = () => {
 	return (
-		<div>
+		<Helmet title="Cart">
 			Cart
-		</div>
+		</Helmet>
 	)
 }
 

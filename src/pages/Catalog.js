@@ -1,5 +1,7 @@
+import Helmet from "../components/Helmet";
+
 const Catalog = () => {
-	return <div>Catalog</div>;
+	return <Helmet title="Catalog">Catalog</Helmet>;
 }
 
 export default Catalog

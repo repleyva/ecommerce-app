@@ -1,8 +1,10 @@
+import Helmet from "../components/Helmet"
+
 const Home = () => {
 	return (
-		<div>
-			home
-		</div>
+		<Helmet title="Home">
+			Home
+		</Helmet>
 	)
 }
 
