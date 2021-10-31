@@ -10,8 +10,20 @@
   }
 }
 
+@mixin smmobile {
+  @media only screen and (max-width: $smmobile-width) {
+    @content;
+  }
+}
+
 @mixin tablet {
   @media only screen and (max-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin smtablet {
+  @media only screen and (max-width: $smtablet-width) {
     @content;
   }
 }
