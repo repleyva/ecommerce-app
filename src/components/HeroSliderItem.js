@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
+import Button from "./Button";
 
 const HeroSliderItem = (props) => {
   return (
     <div className={`hero-slider__item ${props.active && "active"}`}>
       <div className="hero-slider__item__info">
-        <div className={`hero-slider__item__info__title color-${props.item.color}`}>
+        <div
+          className={`hero-slider__item__info__title color-${props.item.color}`}
+        >
           <span>{props.item.title}</span>
         </div>
         <div className="hero-slider__item__info__description">
@@ -12,7 +15,7 @@ const HeroSliderItem = (props) => {
         </div>
         <div className="hero-slider__item__info__btn">
           <Link to={props.item.path}>
-            <button>See details</button>
+            <Button bgColor={props.item.color} animate= {true} icon={`bx bx-cart`}>See details</Button>
           </Link>
         </div>
       </div>
