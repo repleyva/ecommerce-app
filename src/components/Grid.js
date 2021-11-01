@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const Grid = (props) => {
   const style = {
-    gap: props.gap && `${props.gap}`,
+    gap: props.gap && `${props.gap}px`,
   };
 
   const col = props.col && `grid-col-${props.col}`;
