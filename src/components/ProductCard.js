@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import numberWithCommas from "../utils/numberWithCommas";
 import Button from "./Button";
 
-const ProductCart = (props) => {
+const ProductCard = (props) => {
   return (
     <div className="product-card">
       <Link to={`/catalog/${props.slug}`}>
@@ -28,4 +28,4 @@ const ProductCart = (props) => {
   );
 };
 
-export default ProductCart;
+export default ProductCard;
