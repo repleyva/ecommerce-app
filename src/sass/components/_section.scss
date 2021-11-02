@@ -11,8 +11,23 @@
     font-size: 4.5rem;
     line-height: 5rem;
     overflow: hidden;
-		text-align: center;
-		color: $main-color;
-		padding-bottom: 10px;
+    text-align: center;
+    color: $main-color;
+    padding-bottom: 10px;
+
+    @include tablet {
+      font-size: 3rem;
+      line-height: 3.75rem;
+    }
+
+    @include mobile {
+      font-size: 2.5rem;
+      line-height: 3.75rem;
+    }
+
+    @include smmobile {
+      font-size: 2rem;
+      line-height: 2.2rem;
+    }
   }
 }
