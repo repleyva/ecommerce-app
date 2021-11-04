@@ -3,12 +3,10 @@ import colors from "../assets/fake-data/product-color";
 import size from "../assets/fake-data/product-size";
 import productData from "../assets/fake-data/products";
 import CheckBox from "../components/CheckBox";
-import Grid from "../components/Grid";
 import Helmet from "../components/Helmet";
-import ProductCard from "../components/ProductCard";
 import Button from "../components/Button";
-import { useCallback, useEffect, useState } from "react";
-import { useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import InfinityList from "../components/InfinityList";
 
 const Catalog = () => {
   const initFilter = {
@@ -87,10 +85,19 @@ const Catalog = () => {
     updateProducts();
   }, [filter]);
 
+  const filterRef = useRef(null);
+  const showHideFilter = () => filterRef.current.classList.toggle("active");
+
   return (
     <Helmet title="Catalog">
       <div className="catalog">
-        <div className="catalog__filter">
+        <div className="catalog__filter" ref={filterRef}>
+          <div
+            className="catalog__filter__close"
+            onClick={() => showHideFilter()}
+          >
+            <i className="bx bx-left-arrow-alt"></i>
+          </div>
           <div className="catalog__filter__widget">
             <div className="catalog__filter__widget__title">
               product portfolio
@@ -156,26 +163,20 @@ const Catalog = () => {
                 size="sm"
                 icon="bx bxs-trash-alt"
                 animate={true}
-								onClick={() => setFilter(initFilter)}
+                onClick={() => setFilter(initFilter)}
               >
                 remove filter
               </Button>
             </div>
           </div>
         </div>
+        <div className="catalog__filter__toggle">
+          <Button size="sm" onClick={() => showHideFilter()}>
+            Filter
+          </Button>
+        </div>
         <div className="catalog__content">
-          <Grid col={3} mdCol={2} smCol={1} gap={20}>
-            {products.map((item, index) => (
-              <ProductCard
-                key={index}
-                img01={item.image01}
-                img02={item.image02}
-                name={item.title}
-                price={Number(item.price)}
-                slug={item.slug}
-              />
-            ))}
-          </Grid>
+          <InfinityList data={products} />
         </div>
       </div>
     </Helmet>
