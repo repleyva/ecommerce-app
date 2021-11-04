@@ -6,7 +6,7 @@ const Button = (props) => {
   return (
     <button
       className={`btn ${bgColor} ${size} ${animate}`}
-      onClick={props.onClick && props.onClick()}
+      onClick={props.onClick && props.onClick}
     >
       <span className="btn__txt">{props.children}</span>
       {props.icon && (
