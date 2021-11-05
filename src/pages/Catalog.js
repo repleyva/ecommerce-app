@@ -88,6 +88,7 @@ const Catalog = () => {
   const filterRef = useRef(null);
   const showHideFilter = () => filterRef.current.classList.toggle("active");
 
+
   return (
     <Helmet title="Catalog">
       <div className="catalog">
@@ -158,7 +159,7 @@ const Catalog = () => {
             </div>
           </div>
           <div className="catalog__filter__widget">
-            <div className="catalog__filter__widget__content">
+            <div className="catalog__filter__widget__content btnclear">
               <Button
                 size="sm"
                 icon="bx bxs-trash-alt"

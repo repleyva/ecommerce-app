@@ -23,7 +23,7 @@
 
     @include mobile {
       top: $header-mobile-height;
-			overflow-y: scroll;
+      overflow-y: scroll;
     }
 
     &.active {
@@ -32,6 +32,7 @@
 
     &__widget {
       margin-bottom: 2rem;
+			overflow-y: auto;
 
       &__title {
         font-size: 1.25rem;
@@ -73,5 +74,15 @@
       display: block;
       margin-bottom: 2rem;
     }
+  }
+}
+
+.btnclear {
+  @include tablet {
+    position: absolute;
+  }
+
+  @include mobile {
+    position: relative;
   }
 }
