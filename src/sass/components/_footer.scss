@@ -3,7 +3,7 @@
   box-shadow: $box-shadow;
   font-size: 1.1rem;
 
-   &__logo {
+  &__logo {
     height: 38px;
   }
 
@@ -19,9 +19,9 @@
     font-weight: 600;
   }
 
- &__content {
+  &__content {
     p {
-      margin-bottom: .8rem;
+      margin-bottom: 0.8rem;
     }
   }
 }
