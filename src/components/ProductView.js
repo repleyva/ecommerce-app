@@ -1,23 +1,25 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { withRouter } from "react-router";
+import { addItem, removeItem } from "../redux/shopping-cart/cartItemsSlide";
 import numberWithCommas from "../utils/numberWithCommas";
 import Button from "./Button";
 
 const ProductView = (props) => {
   let product = props.product;
 
-	 if (product === undefined)
-     product = {
-       title: "",
-       price: "",
-       image01: null,
-       image02: null,
-       categorySlug: "",
-       colors: [],
-       slug: "",
-       size: [],
-       description: "",
-     };
+  if (product === undefined)
+    product = {
+      title: "",
+      price: "",
+      image01: null,
+      image02: null,
+      categorySlug: "",
+      colors: [],
+      slug: "",
+      size: [],
+      description: "",
+    };
 
   const [previewImg, setPreviewImg] = useState(product.image01);
   const [descriptionExpand, setDescriptionExpand] = useState(false);
@@ -25,7 +27,8 @@ const ProductView = (props) => {
   const [size, setSize] = useState(undefined);
   const [quantity, setQuantity] = useState(1);
 
- 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     setPreviewImg(product.image01);
     setQuantity(1);
@@ -46,49 +49,43 @@ const ProductView = (props) => {
       alert("Please choose color!");
       return false;
     }
-
     if (size === undefined) {
       alert("Please choose a size!");
       return false;
     }
-
     return true;
   };
 
   const addToCart = () => {
     if (check()) {
-      /* let newItem = {
-        slug: product.slug,
-        color: color,
-        size: size,
-        price: product.price,
-        quantity: quantity,
-      };
-      if (dispatch(addItem(newItem))) {
+      if (dispatch(addItem(newItem()))) {
         alert("Success");
       } else {
         alert("Fail");
-      } */
+      }
     }
   };
 
   const goToCart = () => {
     if (check()) {
-			props.history.push("/cart");
-      /* let newItem = {
-        slug: product.slug,
-        color: color,
-        size: size,
-        price: product.price,
-        quantity: quantity,
-      };
-      if (dispatch(addItem(newItem))) {
-        dispatch(remove());
+      props.history.push("/cart");
+      if (dispatch(addItem(newItem()))) {
+        dispatch(removeItem());
         props.history.push("/cart");
       } else {
         alert("Fail");
-      } */
+      }
     }
+  };
+
+  const newItem = () => {
+    return {
+      slug: product.slug,
+      color: color,
+      size: size,
+      price: product.price,
+      quantity: quantity,
+    };
   };
 
   return (
