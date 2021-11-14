@@ -5,25 +5,27 @@ import Button from "./Button";
 
 const ProductView = (props) => {
   let product = props.product;
+
+	 if (product === undefined)
+     product = {
+       title: "",
+       price: "",
+       image01: null,
+       image02: null,
+       categorySlug: "",
+       colors: [],
+       slug: "",
+       size: [],
+       description: "",
+     };
+
   const [previewImg, setPreviewImg] = useState(product.image01);
   const [descriptionExpand, setDescriptionExpand] = useState(false);
   const [color, setColor] = useState(undefined);
   const [size, setSize] = useState(undefined);
   const [quantity, setQuantity] = useState(1);
 
-  if (product === undefined)
-    product = {
-      title: "",
-      price: "",
-      image01: null,
-      image02: null,
-      categorySlug: "",
-      colors: [],
-      slug: "",
-      size: [],
-      description: "",
-    };
-
+ 
   useEffect(() => {
     setPreviewImg(product.image01);
     setQuantity(1);
