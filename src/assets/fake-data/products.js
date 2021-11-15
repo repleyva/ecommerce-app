@@ -265,10 +265,30 @@ const getProducts = (count) => {
 
 const getProductBySlug = (slug) => products.find((e) => e.slug === slug);
 
+const getCartItemsDetail = (cartItem) => {
+  let res = []; // variable vacía
+  if (cartItem.length > 0) {
+    // si tiene elementos entonces
+    cartItem.forEach((element) => {
+      // recorrelo
+      res.push({
+        // agrega lo que traiga el elemento y agregale una propiedad
+        // llamada producto cuyo contenido será el elemento hallado
+        // con la funcion getProductBySlug
+        ...element,
+        product: getProductBySlug(element.slug),
+      });
+    });
+
+    return res;
+  }
+};
+
 const productData = {
   getAllProducts,
   getProducts,
   getProductBySlug,
+  getCartItemsDetail,
 };
 
 export default productData;
