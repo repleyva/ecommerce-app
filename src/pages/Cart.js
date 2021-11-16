@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import productData from "../assets/fake-data/products";
 import Button from "../components/Button";
+import CartItem from "../components/CartItem";
 import Helmet from "../components/Helmet";
 import numberWithCommas from "../utils/numberWithCommas";
 
@@ -51,9 +52,9 @@ const Cart = () => {
           </div>
         </div>
         <div className="cart__list">
-          {/* {cartProducts.map((item, index) => (
+          {cartProducts && cartProducts.map((item, index) => (
             <CartItem item={item} key={index} />
-          ))} */}
+          ))}
         </div>
       </div>
     </Helmet>

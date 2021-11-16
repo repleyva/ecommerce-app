@@ -13,6 +13,7 @@ export const cartItemsSlice = createSlice({
   name: "cartItems",
   initialState,
   reducers: {
+    // agregar un producto al carrito
     addItem: (state, action) => {
       const newItem = action.payload; // tomamos el valor que fué mandado
       const duplicate = state.value.filter(
@@ -70,23 +71,33 @@ export const cartItemsSlice = createSlice({
       );
 			//console.log(state.value);
     },
+    // actualizar item
     updateItem: (state, action) => {
+      // tomamos el payload mandado por el item a actualizar
       const newItem = action.payload;
+      // se filtra en el estado el elemento cuyo slug, valor y tamaño sea igual
+      // al mandado por payload y este elemento se agrega a la variable item
       const item = state.value.filter(
         (e) =>
           e.slug === newItem.slug &&
           e.color === newItem.color &&
           e.size === newItem.size
       );
+      // si existe ese elemento entonces
       if (item.length > 0) {
+        // al estado se le va a agregar todos los elementos cuyos valores
+        // sean diferentes al valor mandado por payload para borrar el item a actualizar
         state.value = state.value.filter(
           (e) =>
             e.slug !== newItem.slug ||
             e.color !== newItem.color ||
             e.size !== newItem.size
         );
+        // estos elementos se agregan de nuevo al estado
         state.value = [
           ...state.value,
+          // y se le agregan los nuevos parámetros que mando el usuario, es decir, 
+          // se agrega de nuevo el item con los nuevos parámetros
           {
             id: item[0].id,
             slug: newItem.slug,
@@ -97,6 +108,7 @@ export const cartItemsSlice = createSlice({
           },
         ];
       }
+      // esto se actualiza en el locaStorage
       localStorage.setItem(
         "cartItems",
         JSON.stringify(
@@ -104,12 +116,17 @@ export const cartItemsSlice = createSlice({
         )
       );
     },
+    // eliminar un producto del carrito
     removeItem: (state, action) => {
+      // tomamos el item mandado por el payload
       const item = action.payload;
+      // se filtra todos los elementos diferentes a los pámetros mandados por el item
+      // y se le agregan al estado
       state.value = state.value.filter(
         (e) =>
           e.slug !== item.slug || e.color !== item.color || e.size !== item.size
       );
+      // estod elementos son mandados al local storage
       localStorage.setItem(
         "cartItems",
         JSON.stringify(

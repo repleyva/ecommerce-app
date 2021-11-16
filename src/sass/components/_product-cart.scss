@@ -58,9 +58,4 @@
     }
   }
 
-  &__btn {
-    @include tablet {
-      display: none;
-    }
-  }
 }
